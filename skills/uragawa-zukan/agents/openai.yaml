@@ -1,0 +1,4 @@
+interface:
+  display_name: "ウラガワ図鑑"
+  short_description: "観測記録・画像プロンプト・商品化案を世界観に沿って作る"
+  default_prompt: "Use $uragawa-zukan to create a new observation with visual prompt, SNS copy, and merch notes."
