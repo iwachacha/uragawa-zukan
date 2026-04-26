@@ -1,43 +1,57 @@
 # uragawa-zukan
 
-「ウラガワ図鑑」の制作基盤です。世界観の核は `uragawa_zukan.md`、毎回の出力ルールは `uragawa_zukan_output_rules.md` にあります。
+「ウラガワ図鑑」の制作基盤です。世界観の核を固定しながら、SNS投稿、画像生成プロンプト、SUZURI商品化候補を継続制作します。
 
-Codexで作業するときは、まず [AGENTS.md](AGENTS.md) と [docs/production_workflow.md](docs/production_workflow.md) を参照します。
+## 入口
 
-## よく使うファイル
+- [uragawa_zukan.md](uragawa_zukan.md): 世界観の核
+- [docs/current_strategy.md](docs/current_strategy.md): 現在の運用方針
+- [docs/creative_decision_pipeline.md](docs/creative_decision_pipeline.md): 制作判断の順序
+- [AGENTS.md](AGENTS.md): Codex向け作業指示
 
-- [AGENTS.md](AGENTS.md): Codex向けの作業指示
-- [templates/observation.md](templates/observation.md): 毎回の出力テンプレート
-- [templates/concept_review.md](templates/concept_review.md): 生成前の採用判断レビュー
-- [templates/image_review.md](templates/image_review.md): 生成画像レビュー用テンプレート
-- [prompts/new_observation.md](prompts/new_observation.md): 新規観測の依頼テンプレート
-- [prompts/relationship_observation.md](prompts/relationship_observation.md): 過去生成物との関係性を作る依頼テンプレート
-- [prompts/merch_refinement.md](prompts/merch_refinement.md): SUZURI向け再編集テンプレート
-- [data/uragawa_ledger.tsv](data/uragawa_ledger.tsv): 正式採用した存在の台帳
-- [data/continuity_notes.md](data/continuity_notes.md): 関係性や再登場候補の記録
-- [data/motif_rotation.tsv](data/motif_rotation.tsv): モチーフ偏りの管理表
-- [data/style_memory.tsv](data/style_memory.tsv): 反応方向・視覚トリックの履歴
-- [docs/visual_strength_gate.md](docs/visual_strength_gate.md): 見た目の強さの事前判定
-- [docs/pointed_appeal_gate.md](docs/pointed_appeal_gate.md): 誰かに刺す魅力の設計
-- [docs/fantasy_amplitude_policy.md](docs/fantasy_amplitude_policy.md): 現実接続とファンタジー量の調整
-- [docs/audience_and_motif_safety.md](docs/audience_and_motif_safety.md): ターゲット層と避けるモチーフ
-- [docs/visual_strategy.md](docs/visual_strategy.md): 画像化・商品化時の主役戦略
-- [docs/suzuri_product_references.md](docs/suzuri_product_references.md): SUZURI公式仕様と商品化参考
-- [docs/motif_suitability_gate.md](docs/motif_suitability_gate.md): 主役題材としての適性判断
-- [docs/product_format_rules.md](docs/product_format_rules.md): SUZURI向け商品フォーマット制約
-- [docs/structured_image_prompt.md](docs/structured_image_prompt.md): gpt-image2.0向け構造化プロンプト形式
+## よく使うテンプレート
+
+- [templates/idea_batch.md](templates/idea_batch.md): 複数案の軽量出し
+- [templates/observation.md](templates/observation.md): 採用候補のフル出力
+- [templates/concept_review.md](templates/concept_review.md): 画像生成前の採用判断
+- [templates/image_review.md](templates/image_review.md): 生成画像レビュー
+
+## データ
+
+- [data/idea_bank.tsv](data/idea_bank.tsv): 未採用案・保留案
+- [data/selection_feedback.tsv](data/selection_feedback.tsv): ユーザー選別結果
+- [data/uragawa_ledger.tsv](data/uragawa_ledger.tsv): 正式採用した存在
+- [data/style_memory.tsv](data/style_memory.tsv): 公開・生成済みの反応方向と視覚トリック
+- [data/motif_taxonomy.tsv](data/motif_taxonomy.tsv): モチーフ分類、安全性、配分
+- [data/continuity_notes.md](data/continuity_notes.md): 関係性や再登場候補
+
+## 主要ドキュメント
+
+- [docs/visual_language.md](docs/visual_language.md): 見た目の基準
+- [docs/product_qa.md](docs/product_qa.md): SUZURI商品化前提の確認
+- [docs/structured_image_prompt.md](docs/structured_image_prompt.md): gpt-image2.0向け構造化プロンプト
+- [docs/suzuri_product_references.md](docs/suzuri_product_references.md): SUZURI公式仕様と参考
+- [docs/quality_rubric.md](docs/quality_rubric.md): 必須ゲートと採点基準
 
 ## 検証
 
-生成した観測Markdownは、最低限の構成チェックを実行できます。
-
 ```powershell
-python scripts/validate_uragawa_output.py path\to\output.md
 python scripts/validate_uragawa_output.py --self-test
+python scripts/validate_uragawa_output.py templates\observation.md
+python scripts/validate_uragawa_output.py --strict tests\fixtures\valid_observation.md
 python scripts/validate_ledger.py
 python scripts/validate_style_memory.py
+python scripts/validate_idea_workflow.py
 python scripts/check_motif_balance.py
-python scripts/check_motif_balance.py --strict
-python scripts/check_motif_safety.py outputs\some-output.md
+python scripts/check_motif_balance.py --include-ideas
+python scripts/check_motif_safety.py --strict tests\fixtures\valid_observation.md
 python scripts/next_uragawa_number.py
+```
+
+失敗することを確認するfixture:
+
+```powershell
+python scripts/validate_uragawa_output.py --strict tests\fixtures\blocked_motif_observation.md
+python scripts/validate_uragawa_output.py --strict tests\fixtures\invalid_horizontal_observation.md
+python scripts/check_motif_safety.py --strict tests\fixtures\blocked_motif_observation.md
 ```

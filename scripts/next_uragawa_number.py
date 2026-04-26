@@ -20,7 +20,7 @@ def next_number(path: Path) -> str:
     with path.open("r", encoding="utf-8", newline="") as handle:
         reader = csv.DictReader(handle, delimiter="\t")
         for row in reader:
-            match = NO_RE.match((row.get("No") or "").strip())
+            match = NO_RE.match((row.get("id") or row.get("No") or "").strip())
             if match:
                 used.append(int(match.group(1)))
 

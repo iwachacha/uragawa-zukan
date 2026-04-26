@@ -41,26 +41,37 @@
 
 [GOAL]
 
-[SUBJECT]
+[CORE SUBJECT]
+
+[HIDDEN-WORLD LOGIC]
+
+[VISUAL HOOK]
 
 [ACTION]
 
-[HIDDEN SIDE]
-
 [COMPOSITION]
 primary format:
-secondary use:
+secondary crops:
 visual strategy:
 background:
-relative scale:
-target product:
+camera / angle:
+spacing:
 master canvas:
+
+[PRODUCT USE]
+target product:
+sticker cutout:
+t-shirt / tote placement:
+phone-case crop:
+acrylic concerns:
 
 [STYLE]
 
-[ACCENT]
+[MUST INCLUDE]
 
-[AVOID]
+[MUST AVOID]
+
+[NEGATIVE CONSTRAINTS]
 
 ## SNS投稿文
 ### 短文版
@@ -78,4 +89,5 @@ master canvas:
 - 文字の有無：
 
 ## 存在台帳登録用
-No.XXX｜存在名｜モチーフ｜特徴｜小話
+id	title	category	motif	visual_strategy	target_products	status	score	continuity_links	created_at	notes
+No.XXX	存在名	カテゴリ	モチーフ	画像戦略	対象商品	draft	0	-	YYYY-MM-DD	-

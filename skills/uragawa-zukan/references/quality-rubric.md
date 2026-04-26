@@ -1,39 +1,31 @@
 # Quality Rubric
 
-Score 0-2 for each item.
+First check hard gates. If any gate fails, do not proceed to image generation or merchandising.
 
-## Worldview Fit
+## Hard Gates
 
-- 0: not an unseen side of a familiar thing
-- 1: hidden story exists but reality connection is weak
-- 2: fictional but strangely understandable
+- Worldview: unseen side of a familiar thing.
+- Reality connection: visible connection to shape, use, season, handling, ecology, texture, or similar.
+- Motif safety: no unpleasant insect or pest protagonist.
+- Visual strength: not a static object; action, change, relationship, or visible hidden mechanism exists.
+- Product viability: can work without text on at least one SUZURI-style product.
+- Audience fit: low resistance for a women-centered entry through cute, emotional, stylish, or surreal appeal.
+- Format: square master by default; not horizontal-only.
 
-## Visual Hook
+## Scores
 
-- 0: text-only idea
-- 1: image can show part of it
-- 2: image clearly shows something ordinary becoming slightly wrong
+Score each 0-2.
 
-## Motif Recognition
+- Worldview fit
+- Surprise
+- Story/action
+- Visual clarity
+- Motif recognition
+- Audience fit
+- Merchandise potential
+- SUZURI reproducibility
+- Freshness
+- Restraint
+- Image-generation robustness
 
-- 0: motif unclear
-- 1: motif needs explanation
-- 2: motif recognizable at a glance
-
-## Merchandise Potential
-
-- 0: weak as standalone design
-- 1: needs major redesign
-- 2: strong as sticker, T-shirt, tote, or phone case
-
-## Freshness
-
-- 0: repeats common project pattern
-- 1: familiar but with a useful twist
-- 2: expands the worldview without breaking it
-
-## Restraint
-
-- 0: moralizes or over-explains
-- 1: slightly explanatory
-- 2: leaves observational space
+Use 16+ as an image-generation candidate and 19+ as a merchandise candidate when hard gates pass.

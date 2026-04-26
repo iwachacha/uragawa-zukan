@@ -4,9 +4,9 @@
 
 ## 採用ステータス
 
-`data/uragawa_ledger.tsv` の `状態` は次のいずれかにする。
+`data/uragawa_ledger.tsv` の `status` は次のいずれかにする。
 
-- `idea`: 種だけある
+- `idea`: 種だけある。通常は `data/idea_bank.tsv` で管理し、台帳には入れない
 - `draft`: 観測文とビジュアル設計まで作った
 - `image_prompted`: 画像生成プロンプトまで作った
 - `image_reviewed`: 生成画像をレビューした
@@ -20,7 +20,7 @@
 
 ## 番号ルール
 
-- 台帳の `No` は `No.001` の3桁形式にする。
+- 台帳の `id` は `No.001` の3桁形式にする。
 - 番号は採用順で、世界観上の強さや重要度を表さない。
 - 欠番は許容する。削除や差し戻しで番号を詰め直さない。
 - 次の番号は `python scripts/next_uragawa_number.py` で確認する。
@@ -55,10 +55,10 @@
 - 現実との接続点が1つ以上、画面内で見える。
 - 裏事情が文章だけでなく、画像プロンプトにも入っている。
 - 文字なしの商品化可否が判断されている。
-- `docs/motif_suitability_gate.md` に照らして、主役題材としての適性がある。
-- `docs/product_format_rules.md` に照らして、横長専用ではない。
+- `docs/motif_suitability_gate.md` と `data/motif_taxonomy.tsv` に照らして、主役題材としての適性がある。
+- `docs/product_format_rules.md` と `docs/product_qa.md` に照らして、横長専用ではない。
 - 台帳登録用の1行がある。
-- `scripts/validate_uragawa_output.py` が通る。
+- `scripts/validate_uragawa_output.py --strict` が通る。
 
 ## 商品化候補の最低条件
 

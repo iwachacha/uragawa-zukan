@@ -1,76 +1,70 @@
 ---
 name: uragawa-zukan
-description: Create and refine ウラガワ図鑑 content, including new observations, hidden-world concepts, gpt-image2.0 visual prompts, SNS copy, SUZURI merchandise notes, continuity links, and ledger-ready entries. Use when Codex is asked to produce, evaluate, adapt, or merchandise Uragawa Zukan ideas while preserving the fixed worldview and allowing flexible creative variation.
+description: Create, evaluate, refine, and merchandise ウラガワ図鑑 content. Use when Codex needs to generate idea batches, hidden-world observations, gpt-image2.0 prompts, SNS copy, SUZURI product notes, image reviews, continuity links, motif-balance checks, or ledger-ready entries while preserving the fixed Uragawa Zukan worldview and current audience/product strategy.
 ---
 
 # ウラガワ図鑑
 
 ## Core
 
-Create observations of the unseen back side of familiar things. Keep the worldview fixed, but do not fix the format, emotion, motif type, or visual trick.
+Create observations of the unseen back side of familiar things.
 
-The invariant is:
+Invariant:
 
 ```text
 身近な存在 × 現実との接続点 × 架空の裏事情 × 反応の方向 × 視覚化
 ```
 
-Aim for "ありえないけど、なんかわかる". Avoid turning the work into only a cute mascot, a single joke, a moral lesson, or a repeated template.
+Preserve the worldview. Do not freeze motif type, emotion, output format, visual trick, or product layout.
 
-## Workflow
+## Project Workflow
 
-1. Read `references/worldview-core.md` for the non-negotiable worldview.
-2. If producing a full output, follow `references/output-contract.md`.
-3. Check past continuity in the project files when available:
-   - `data/uragawa_ledger.tsv`
-   - `data/continuity_notes.md`
-   - `data/style_memory.tsv`
-   - `data/motif_rotation.tsv`
-   - run `scripts/check_motif_balance.py`
-4. Generate several directions before choosing one. Vary motif class, emotional direction, and visual mechanism.
-   Prefer living beings and plants/fungi as main characters. Use tools and daily objects less often, usually as relationship or supporting motifs.
-5. Write the visual design before the image prompt.
-6. For gpt-image2.0 prompts, describe visible objects, action, hidden story visualization, expression, colors, line quality, background, and merchandise-friendly silhouette.
-7. Validate full Markdown outputs with `scripts/validate_uragawa_output.py` when working in this repository.
-8. Before image generation or ledger registration, use `templates/concept_review.md` when the candidate needs an explicit go/no-go record.
-9. Validate ledger and history changes with `scripts/validate_ledger.py` and `scripts/validate_style_memory.py`; get adopted numbers with `scripts/next_uragawa_number.py`.
+When working inside the project repository:
 
-## Creative Guardrails
-
-- Preserve: unseen hidden circumstances, thin real-world connection, observational tone, visual merchandise potential.
-- Vary: motif, reaction, tone, format, visual trick, composition, product layout.
-- Prefer a specific visual mechanism over a vague mood.
-- Require at least two first-glance strengths: character, story/action, silhouette, surrealness, cuteness, or graphic appeal.
-- State who the concept is for and what will hit them. Push one appeal slightly: devotion, unease, labor, ownership desire, odd coolness, or scary-cuteness.
-- Reject still-life concepts where objects are merely placed and the hidden story lives only in text or tiny details.
-- Let captions enrich the world, but make the image work without long text.
-- Use relationships between beings sparingly and keep them local to the observation unless the user asks for continuity.
+1. Read `uragawa_zukan.md` for the fixed worldview.
+2. Read `docs/current_strategy.md` for current audience, motif, fantasy, and product defaults.
+3. Follow `docs/creative_decision_pipeline.md` for the decision order.
+4. Run or consult `scripts/check_motif_balance.py` before new ideation.
+5. Use `templates/idea_batch.md` before producing full observations unless the user already selected a concept.
+6. Promote selected ideas to `templates/observation.md`.
+7. Use `docs/structured_image_prompt.md` for gpt-image2.0 prompts.
+8. Validate filled outputs with `scripts/validate_uragawa_output.py --strict`.
 
 ## Output Modes
 
-Use the mode that matches the request.
+- **Idea batch**: produce 20-40 compact candidates with category, motif, reality connection, hidden circumstance, visual hook, target audience, product strategy, and risk.
+- **Full observation**: follow `templates/observation.md`.
+- **Concept review**: use `templates/concept_review.md` and `docs/quality_rubric.md`.
+- **Image prompt**: write structured AI-facing visual instructions, not prose-only explanations.
+- **Image review**: use `templates/image_review.md`, focusing on first-glance appeal, worldview clarity, and product viability.
+- **Merch refinement**: simplify silhouette, reduce text dependency, choose product crops, and preserve the strongest visual hook.
+- **Continuity work**: read `data/uragawa_ledger.tsv`, `data/style_memory.tsv`, and `data/continuity_notes.md` before linking past beings.
 
-- **New observation**: produce the full template from `references/output-contract.md`.
-- **Idea batch**: produce compact candidates with motif, connection point, hidden story, visual core, and product potential.
-- **Relationship observation**: read ledger/continuity first, then connect two or more beings without over-systematizing the world.
-- **Merch refinement**: reduce explanatory text, strengthen silhouette, simplify colors, and produce product-specific prompts.
-- **Image review**: use `templates/image_review.md` after generation, then revise the prompt or concept.
-- **Concept review**: use `templates/concept_review.md` before image generation, SNS testing, or adoption.
-- **Review/validation**: use `references/quality-rubric.md` and list concrete fixes.
+## Guardrails
 
-## Must Check Before Finalizing
+- Prefer `生き物` and `植物・菌類` as main subjects unless the user asks otherwise or balance data says otherwise.
+- Use `道具・日用品` sparingly, often as supporting objects, settings, or relationship anchors.
+- Avoid unpleasant insect or pest motifs as protagonists; use `data/motif_taxonomy.tsv` and `scripts/check_motif_safety.py`.
+- Make the image work without long captions.
+- Require a visible action, transformation, relationship, shadow, reflection, cutaway, interior world, or other visual mechanism.
+- Do not pass concepts that are only cute, only a pun, only a moral lesson, or only a static object.
+- Design for SUZURI from the start: square master by default, clear silhouette, no tiny explanatory text, no horizontal-only composition.
 
-- The motif is recognizable at a glance.
-- The hidden side can be partly understood visually.
-- A real-world property remains visible in the image.
-- The concept is not only cute.
-- The visual has a clear protagonist and action.
-- The image can become a sticker or one-point product without relying on text.
-- It does not repeat the same hidden-story format as recent outputs unless intentional.
+## Validation
 
-## References
+Use these when available:
 
-- `references/worldview-core.md`: fixed worldview and anti-patterns.
-- `references/output-contract.md`: full output structure and prompt requirements.
-- `references/quality-rubric.md`: scoring rubric for concept and merchandise strength.
-- Project docs to consult when available: `docs/audience_and_motif_safety.md`, `docs/visual_strategy.md`, `docs/suzuri_product_references.md`, `docs/visual_strength_gate.md`, `docs/pointed_appeal_gate.md`, `docs/fantasy_amplitude_policy.md`, `docs/motif_suitability_gate.md`, `docs/product_format_rules.md`, `docs/structured_image_prompt.md`.
+```powershell
+python scripts/check_motif_balance.py
+python scripts/check_motif_balance.py --include-ideas
+python scripts/validate_uragawa_output.py --strict outputs\candidate-name.md
+python scripts/check_motif_safety.py --strict outputs\candidate-name.md
+python scripts/validate_ledger.py
+python scripts/validate_style_memory.py
+```
+
+## Bundled References
+
+- `references/worldview-core.md`: portable worldview summary.
+- `references/output-contract.md`: portable full-output contract.
+- `references/quality-rubric.md`: portable review rubric.

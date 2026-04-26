@@ -1,4 +1,4 @@
 interface:
   display_name: "ウラガワ図鑑"
-  short_description: "観測記録・画像プロンプト・商品化案を世界観に沿って作る"
-  default_prompt: "Use $uragawa-zukan to create a new observation with visual prompt, SNS copy, and merch notes."
+  short_description: "案出し・観測記録・画像プロンプト・商品化案を世界観に沿って作る"
+  default_prompt: "Use $uragawa-zukan to create an idea batch, select the strongest direction, then draft a product-ready observation and gpt-image2.0 prompt."

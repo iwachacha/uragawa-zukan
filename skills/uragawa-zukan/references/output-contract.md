@@ -39,7 +39,29 @@ Use this structure for full observations.
 - 商品化で映えるポイント：
 
 ## 画像生成プロンプト
-### 共通画風込みプロンプト
+### 構造化プロンプト
+[GOAL]
+[CORE SUBJECT]
+[HIDDEN-WORLD LOGIC]
+[VISUAL HOOK]
+[COMPOSITION]
+primary format:
+secondary crops:
+visual strategy:
+background:
+camera / angle:
+spacing:
+master canvas:
+[PRODUCT USE]
+target product:
+sticker cutout:
+t-shirt / tote placement:
+phone-case crop:
+acrylic concerns:
+[STYLE]
+[MUST INCLUDE]
+[MUST AVOID]
+[NEGATIVE CONSTRAINTS]
 
 ## SNS投稿文
 ### 短文版
@@ -55,51 +77,14 @@ Use this structure for full observations.
 - 文字の有無：
 
 ## 存在台帳登録用
-No.XXX｜存在名｜モチーフ｜特徴｜小話
+id	title	category	motif	visual_strategy	target_products	status	score	continuity_links	created_at	notes
+No.XXX	存在名	カテゴリ	モチーフ	画像戦略	対象商品	draft	0	-	YYYY-MM-DD	-
 ```
 
 ## Prompt Requirements
 
-Image prompts must include:
-
-- recognizable motif
-- action or pose
-- visualized hidden story
-- visual protagonist and action happening in the image
-- visible real-world connection point
-- expression or emotional restraint
-- line quality
-- color direction
-- background/transparent suitability
-- merchandise-friendly silhouette and whitespace
-- weak expressions to avoid
-
-Use a structured prompt. Prefer this format over a prose paragraph:
-
-```text
-[GOAL]
-[SUBJECT]
-[ACTION]
-[HIDDEN SIDE]
-[COMPOSITION]
-primary format:
-secondary use:
-visual strategy:
-background:
-relative scale:
-target product:
-master canvas:
-[STYLE]
-[ACCENT]
-[AVOID]
-```
-
-Keep the fixed style inside `[STYLE]`: ゆるい手描き線のステッカー風イラスト、白背景または透明背景向き、余白多め、少し太めで揺らぎのある主線、丸く単純化したシルエット、少なめの色数、裏事情部分だけアクセント。
-
-## Ledger Line
-
-Use `No.XXX` for candidates. Use a real three-digit number only after formal adoption.
-
-```text
-No.XXX｜存在名｜モチーフ｜特徴｜小話
-```
+- Make visible objects, action, hidden-world logic, composition, product use, style, must-include items, and avoid items explicit.
+- Prefer `primary format: square`.
+- Use `3000 x 3000 transparent PNG` as the default master canvas.
+- Choose a visual strategy from `Character Icon`, `World Object`, `Relationship Pair`, `Scene Emblem`, `Pattern Seed`.
+- Avoid tiny explanatory text and horizontal-only layouts.
